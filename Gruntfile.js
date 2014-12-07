@@ -10,8 +10,12 @@ module.exports = function(grunt) {
         keepAlive: true
       },
       app: {
-        src: ['src/*.js'],
+        src: ['src/*.js', 'templates/*.hbs', 'templates/**/*.hbs'],
         dest: 'build/app.js',
+        options : {
+          transform : ['hbsfy']
+        }
+
       }
     }
   });

@@ -11,6 +11,7 @@
     "grunt-contrib-uglify": "",
     "grunt-env": "",
     "handlebars": "",
+    "hbsfy": "",
     "jquery": "",
     "matchdep": ""
   },
