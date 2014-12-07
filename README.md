@@ -13,8 +13,8 @@ You must have node installed to install this dashboard
 
 # Screenshot
 
-![assets/screenshots/1.png]
-![assets/screenshots/2.png]
+![1](https://raw.githubusercontent.com/apsdehal/Cluster/master/assets/screenshots/1.png)
+![2](https://raw.githubusercontent.com/apsdehal/Cluster/master/assets/screenshots/2.png)
 
 # Dependencies
 
@@ -22,5 +22,5 @@ You must have node installed to install this dashboard
 - Handlebars - For templating 
 - SASS - For easy css writing
 - Pure - For grids
-- Browserify - For developing CommonJS based modular css
+- Browserify - For developing CommonJS based modular js
 - Grunt - Favorite Task runner
