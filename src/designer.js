@@ -66,7 +66,12 @@ Designer.prototype.deleteServerBox = function() {
 };
 
 Designer.prototype.generateColor = function() {
-	return '#000000';
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color
 };
 
 Designer.prototype.setAppView = function(app, view) {
