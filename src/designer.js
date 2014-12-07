@@ -32,3 +32,11 @@ Designer.prototype.addAppControl = function(name) {
 Designer.prototype.addServerBox = function() {
 	$('.cluster-row').last().append(this.serverBoxHtml);
 };
+
+Designer.prototype.deleteRow = function() {
+	$('.cluster-row').last().remove();
+};
+
+Designer.prototype.deleteServerBox = function() {
+	$('.box').last().remove();
+};

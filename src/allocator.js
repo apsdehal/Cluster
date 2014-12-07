@@ -10,3 +10,7 @@ function Allocator() {
 Allocator.prototype.addServer = function() {
 	this.servers.push(new Server());
 };
+
+Allocator.prototype.destroyServer = function() {
+	this.servers.pop();
+};

@@ -23,4 +23,12 @@ Listener.prototype.listenToClickEvents = function() {
 		}
 		self.allocator.addServer();
 	});
+	$('body').on('click', '.destroy-server-button', function () {
+		if(self.allocator.servers.length % 4 == 1) {
+			self.designer.deleteRow();
+		} else {
+			self.designer.deleteServerBox();
+		}
+		self.allocator.destroyServer();
+	});
 };
