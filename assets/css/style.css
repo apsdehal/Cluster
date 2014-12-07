@@ -1,0 +1,87 @@
+html {
+  background-color: #000;
+  color: #fff;
+  height: 100%; }
+
+body {
+  height: 100%; }
+
+button {
+  border-radius: 20px;
+  height: 20px;
+  width: 20px; }
+
+.main {
+  height: 100%; }
+  .main .sidebar {
+    background-color: #333;
+    height: 100%; }
+    .main .sidebar .controls {
+      padding-top: 10%;
+      width: 50%;
+      margin: 0 auto;
+      clear: both; }
+      .main .sidebar .controls .add-server-button button, .main .sidebar .controls .add-server-button div {
+        color: #fff;
+        border-color: #fff; }
+      .main .sidebar .controls .add-server-button button {
+        background-color: #333; }
+      .main .sidebar .controls .destroy-server-button button, .main .sidebar .controls .destroy-server-button div {
+        color: #ddd;
+        border-color: #ddd; }
+      .main .sidebar .controls .destroy-server-button button {
+        background-color: #333; }
+      .main .sidebar .controls > div {
+        float: left;
+        width: 50%; }
+        .main .sidebar .controls > div button {
+          clear: both;
+          height: 40px;
+          width: 40px;
+          border-radius: 20px;
+          margin-left: 20%;
+          font-size: 30px;
+          background-color: #333;
+          color: #fff; }
+        .main .sidebar .controls > div div {
+          width: 65%;
+          margin: 0 auto;
+          font-size: 10px;
+          margin-top: 15px;
+          clear: both; }
+    .main .sidebar .app-controls {
+      clear: both;
+      width: 100%;
+      padding-top: 100px;
+      padding-right: 10px; }
+      .main .sidebar .app-controls .app-control-row {
+        background-color: #000;
+        border: 1px solid #111;
+        width: 100%;
+        height: 40px;
+        padding-top: 5%;
+        vertical-align: middle;
+        clear: left; }
+        .main .sidebar .app-controls .app-control-row button {
+          background-color: #333;
+          color: #fff;
+          height: 25px;
+          width: 25px;
+          border-radius: 25px; }
+        .main .sidebar .app-controls .app-control-row .name {
+          float: left; }
+        .main .sidebar .app-controls .app-control-row .row-controls {
+          float: right; }
+  .main .main-box .cluster-row {
+    width: 70%;
+    padding: 5% 10% 0 10%;
+    height: 250px; }
+    .main .main-box .cluster-row .box {
+      height: 250px;
+      width: 20%;
+      background-color: #333;
+      margin: 30px auto;
+      float: left;
+      margin: 2.5% 30px; }
+
+/*# sourceMappingURL=style.css.map */
