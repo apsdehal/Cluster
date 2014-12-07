@@ -20,7 +20,7 @@ Server.prototype.removeApp = function(app) {
 			toBeRemoved = i;
 		}
 	}
-	this.apps.splice(i,1);
+	this.apps.splice(toBeRemoved,1);
 	return this.view;
 };
 
