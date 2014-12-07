@@ -28,7 +28,7 @@ Listener.prototype.listenToAddServer = function() {
 		} else {
 			view = self.designer.addServerBox();
 		}
-		self.allocator.addServer();
+		self.allocator.addServer(view);
 	});
 
 };
@@ -41,7 +41,10 @@ Listener.prototype.listenToDestroyServer = function() {
 		} else {
 			self.designer.deleteServerBox();
 		}
-		self.allocator.destroyServer();
+		var apps = self.allocator.destroyServer();
+		for(var i in apps) {
+			self.addApp(apps[i]);
+		}
 	});
 };
 
@@ -49,17 +52,27 @@ Listener.prototype.listenToAppAdd = function() {
 	var self = this, name, app;
 	$('body').on('click', '.add-app', function () {
 		name = $(this).parent().prev().html();
-		app = self.designer[name];
-		self.allocator.startApp(app);
-	})
+		app = self.designer.apps[name];
+		self.addApp(app);
+	});
 };
 
 Listener.prototype.listenToAppDestroy = function() {
 	var self = this, name, app;
 	$('body').on('click', '.destroy-app', function () {
 		name = $(this).parent().prev().html();
-		app = self.designer[name];
-		self.allocator.destroyApp(app);
-		self.allocator.dDestroyroyApp(app);
+		app = self.designer.apps[name];
+		self.deleteApp(app);
 	})
+};
+
+Listener.prototype.addApp = function(app) {
+	var view = this.allocator.addApp(app);
+	this.designer.setAppView(app, view);
+};
+
+Listener.prototype.deleteApp = function(app) {
+	var view = this.allocator.destroyApp(app);
+	this.designer.deleteAppView(app, view);
+
 };

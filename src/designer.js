@@ -6,7 +6,8 @@ var RowTemplate = require("../templates/row.hbs");
 var SidebarTemplate = require('../templates/sidebar.hbs');
 var MainBoxTemplate = require('../templates/main-box.hbs');
 var AppControlTemplate = require('../templates/app-control.hbs');
-var BoxTemplate = require('../templates/partials/box.hbs')
+var BoxTemplate = require('../templates/partials/box.hbs');
+var AppTemplate = require('../templates/app.hbs');
 
 module.exports = Designer;
 
@@ -15,7 +16,7 @@ function Designer() {
 	this.sidebarHtml = SidebarTemplate(); 
 	this.mainBoxHtml = MainBoxTemplate(); 
 	this.serverBoxHtml = BoxTemplate(); 
-	this.apps = [];
+	this.apps = {};
 }
 
 Designer.prototype.addRow = function() {
@@ -40,12 +41,13 @@ Designer.prototype.addApps = function() {
 };
 
 Designer.prototype.addApp = function(name, shortname, color) {
-	this.apps['name'] = new App(name, shortname, color));
+	this.apps[name] = new App(name, shortname, color);
 	this.addAppControl(name);
 };
 
 Designer.prototype.addAppControl = function(name) {
-	var renderedHtml = AppControlTemplate(name);
+	var data = {name: name};
+	var renderedHtml = AppControlTemplate(data);
 	$('.app-controls').append(renderedHtml);
 };
 
@@ -64,5 +66,19 @@ Designer.prototype.deleteServerBox = function() {
 };
 
 Designer.prototype.generateColor = function() {
-	return '#000000'
+	return '#000000';
+};
+
+Designer.prototype.setAppView = function(app, view) {
+	view.append(AppTemplate(app));
+};
+
+Designer.prototype.deleteAppView = function(app, view) {
+	var children = view.find('.app-box');
+	for(var i = children.length - 1; i >= 0; i--){
+		if($(children[i]).children('.name').html() == app.name) {
+			$(children[i]).remove();
+			break;
+		}
+	}
 };

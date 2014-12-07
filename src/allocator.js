@@ -12,7 +12,8 @@ Allocator.prototype.addServer = function(view) {
 };
 
 Allocator.prototype.destroyServer = function() {
-	this.servers.pop();
+	var server = this.servers.pop();
+	return server.apps;
 };
 
 Allocator.prototype.getBestServer = function() {
@@ -21,6 +22,7 @@ Allocator.prototype.getBestServer = function() {
 	var min = 2;
 	for(var i in this.servers) {
 		if(min > this.servers[i].apps.length) {
+			min = this.servers[i].apps.length;
 			number = i;
 		}
 	}
@@ -36,7 +38,7 @@ Allocator.prototype.addApp = function(app) {
 	}
 };
 
-Allocator.prototype.removeApp = function(app) {
+Allocator.prototype.destroyApp = function(app) {
 	var toBeRemovedFrom = this.getToBeRemovedFromServer(app);
 	if(toBeRemovedFrom == -1) {
 		return 0;
@@ -51,18 +53,22 @@ Allocator.prototype.getToBeRemovedFromServer = function(app) {
 	var app;
 	var toBeRemoved = -1;
 	for(var i = servers.length-1; i >= 0; i--) {
-		app = servers[i].app[1];
-		if( app !== undefined && app.name = name) {
-			toBeRemoved = i;
-			break;
+		if(servers[i].apps[1] !== undefined) {
+			app = servers[i].apps[1];
+			if(app.name == name) {
+				toBeRemoved = i;
+				break;
+			}
 		}
 	}
 	if(toBeRemoved == -1) {
 		for(var i = servers.length-1; i >= 0; i--) {
-			app = servers[i].app[0];
-			if( app !== undefined && app.name = name) {
-				toBeRemoved = i;
-				break;
+			if(servers[i].apps[0] !== undefined) {
+				app = servers[i].apps[0];
+				if(app.name == name) { 
+					toBeRemoved = i;
+					break;
+				}
 			}
 		}	
 	}
