@@ -4,6 +4,7 @@ var RowTemplate = require("../templates/row.hbs");
 var SidebarTemplate = require('../templates/sidebar.hbs');
 var MainBoxTemplate = require('../templates/main-box.hbs');
 var AppControlTemplate = require('../templates/app-control.hbs');
+var BoxTemplate = require('../templates/partials/box.hbs')
 
 module.exports = Designer;
 
@@ -11,10 +12,11 @@ function Designer() {
 	this.rowHtml = RowTemplate(); 
 	this.sidebarHtml = SidebarTemplate(); 
 	this.mainBoxHtml = MainBoxTemplate(); 
+	this.serverBoxHtml = BoxTemplate(); 
 }
 
 Designer.prototype.addRow = function() {
-	$('body').append(this.rowHtml);
+	$('body .main .main-box').append(this.rowHtml);
 };
 
 Designer.prototype.startup = function() {
@@ -25,4 +27,8 @@ Designer.prototype.startup = function() {
 Designer.prototype.addAppControl = function(name) {
 	var renderedHtml = AppControlTemplate(name);
 	$('.app-controls').append(renderedHtml);
+};
+
+Designer.prototype.addServerBox = function() {
+	$('.cluster-row').last().append(this.serverBoxHtml);
 };
