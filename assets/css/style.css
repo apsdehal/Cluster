@@ -62,6 +62,11 @@ button {
         padding-top: 5%;
         vertical-align: middle;
         clear: left; }
+        .main .sidebar .app-controls .app-control-row span {
+          padding-top: 0px;
+          width: 10px;
+          height: 25px;
+          float: left; }
         .main .sidebar .app-controls .app-control-row button {
           background-color: #333;
           color: #fff;
@@ -69,6 +74,7 @@ button {
           width: 25px;
           border-radius: 25px; }
         .main .sidebar .app-controls .app-control-row .name {
+          margin-left: 20px;
           float: left; }
         .main .sidebar .app-controls .app-control-row .row-controls {
           float: right; }

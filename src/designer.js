@@ -42,11 +42,11 @@ Designer.prototype.addApps = function() {
 
 Designer.prototype.addApp = function(name, shortname, color) {
 	this.apps[name] = new App(name, shortname, color);
-	this.addAppControl(name);
+	this.addAppControl(name, color);
 };
 
-Designer.prototype.addAppControl = function(name) {
-	var data = {name: name};
+Designer.prototype.addAppControl = function(name, color) {
+	var data = {name: name, color:color};
 	var renderedHtml = AppControlTemplate(data);
 	$('.app-controls').append(renderedHtml);
 };

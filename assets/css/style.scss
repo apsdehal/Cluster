@@ -77,6 +77,12 @@ button {
 				padding-top: 5%;
 				vertical-align: middle;
 				clear: left;
+				span {
+					padding-top: 0px;
+					width: 10px;
+					height: 25px;
+					float: left;
+				}
 				button {
 					background-color: #333;
 					color: #fff;
@@ -85,6 +91,7 @@ button {
 					border-radius: 25px;
 				}
 				.name {
+					margin-left: 20px;
 					float: left;
 				}
 				.row-controls {
