@@ -5,5 +5,5 @@ var Listener = require('./listener.js');
 $(document).ready(function () {
 	var designer = new Designer();
 	designer.startup();
-	var listener = new Listener();
+	var listener = new Listener(designer);
 });

@@ -3,9 +3,9 @@ var Allocator = require('./allocator.js')
 var Designer = require('./designer.js')
 module.exports = Listener;
 
-function Listener() {
+function Listener(designer) {
 	this.allocator = new Allocator();
-	this.designer = new Designer();
+	this.designer = designer;
 	this.listen();
 };
 
@@ -14,15 +14,27 @@ Listener.prototype.listen = function() {
 };
 
 Listener.prototype.listenToClickEvents = function() {
-	var self = this;
+	this.listenToAddServer();
+	this.listenToDestroyServer();
+	this.listenToAppAdd();
+	this.listenToAppDestroy();
+};
+
+Listener.prototype.listenToAddServer = function() {
+	var view, self = this;
 	$('body').on('click', '.add-server-button', function () {
 		if(self.allocator.servers.length % 4 == 0) {
-			self.designer.addRow();
+			view = self.designer.addRow();
 		} else {
-			self.designer.addServerBox();
+			view = self.designer.addServerBox();
 		}
 		self.allocator.addServer();
 	});
+
+};
+
+Listener.prototype.listenToDestroyServer = function() {
+	var self = this, view;
 	$('body').on('click', '.destroy-server-button', function () {
 		if(self.allocator.servers.length % 4 == 1) {
 			self.designer.deleteRow();
@@ -31,4 +43,23 @@ Listener.prototype.listenToClickEvents = function() {
 		}
 		self.allocator.destroyServer();
 	});
+};
+
+Listener.prototype.listenToAppAdd = function() {
+	var self = this, name, app;
+	$('body').on('click', '.add-app', function () {
+		name = $(this).parent().prev().html();
+		app = self.designer[name];
+		self.allocator.startApp(app);
+	})
+};
+
+Listener.prototype.listenToAppDestroy = function() {
+	var self = this, name, app;
+	$('body').on('click', '.destroy-app', function () {
+		name = $(this).parent().prev().html();
+		app = self.designer[name];
+		self.allocator.destroyApp(app);
+		self.allocator.dDestroyroyApp(app);
+	})
 };
